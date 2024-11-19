@@ -61,6 +61,6 @@ jobs:
         tag: ${{ github.ref_name }}  # 使用推送的标签
         name: "Release ${{ github.ref_name }}"
         body: "Release notes for version ${{ github.ref_name }}" # 提供附加的描述或说明
-        token: ${{ secrets.GITHUB_TOKEN }}
+        token: ${{ secrets.RELEASE_TOKEN }}  # 使用 PAT 代替 GITHUB_TOKEN
         draft: false
         prerelease: false
