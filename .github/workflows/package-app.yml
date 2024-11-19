@@ -37,7 +37,7 @@ jobs:
 
     # Step 5: 保存打包结果到 Artifacts
     - name: Upload Executable
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: PySide6-App
         path: dist/  # 上传 dist 文件夹
