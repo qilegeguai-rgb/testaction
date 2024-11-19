@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - master  # 当推送到主分支时触发
+  tags:
+      - "v*"  # 当推送以 "v" 开头的标签时触发   
   pull_request:  # 在 PR 提交时触发
     branches:
       - master
@@ -47,8 +49,18 @@ jobs:
     runs-on: windows-latest
     
     steps:
+    
+    # Step 1: 检查出代码（需要确保标签存在）
+    - name: Checkout Code
+      uses: actions/checkout@v3
+    
     - name: Upload to GitHub Releases
       uses: ncipollo/release-action@v1
       with:
         artifacts: "dist/main.exe"
+        tag: ${{ github.ref_name }}  # 使用推送的标签
+        name: "Release ${{ github.ref_name }}"
+        body: "Release notes for version ${{ github.ref_name }}" # 提供附加的描述或说明
         token: ${{ secrets.GITHUB_TOKEN }}
+        draft: false
+        prerelease: false
