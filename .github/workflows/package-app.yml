@@ -3,10 +3,10 @@ name: Build PySide6 Application
 on:
   push:
     branches:
-      - main  # 当推送到主分支时触发
+      - master  # 当推送到主分支时触发
   pull_request:  # 在 PR 提交时触发
     branches:
-      - main
+      - master
 
 jobs:
   build:
