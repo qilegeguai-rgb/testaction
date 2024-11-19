@@ -41,3 +41,10 @@ jobs:
       with:
         name: PySide6-App
         path: dist/  # 上传 dist 文件夹
+
+
+- name: Upload to GitHub Releases
+  uses: ncipollo/release-action@v1
+  with:
+    artifacts: "dist/main.exe"
+    token: ${{ secrets.GITHUB_TOKEN }}
