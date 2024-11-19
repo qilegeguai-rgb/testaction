@@ -4,11 +4,11 @@ on:
   push:
     branches:
       - master  # 当推送到主分支时触发
-  tags:
-      - "v*"  # 当推送以 "v" 开头的标签时触发   
-  pull_request:  # 在 PR 提交时触发
+    tags:
+      - "v*"  # 当推送以 "v" 开头的标签时触发
+  pull_request:
     branches:
-      - master
+      - master  # 在 PR 提交时触发，针对主分支
 
 jobs:
   build:
