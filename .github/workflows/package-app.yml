@@ -1,0 +1,43 @@
+name: Build PySide6 Application
+
+on:
+  push:
+    branches:
+      - main  # 当推送到主分支时触发
+  pull_request:  # 在 PR 提交时触发
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: windows-latest  # 使用 Windows 环境
+
+    steps:
+    # Step 1: 检查出代码
+    - name: Checkout Code
+      uses: actions/checkout@v3
+
+    # Step 2: 设置 Python 环境
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'  # 指定 Python 版本
+
+    # Step 3: 安装依赖
+    - name: Install Dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    # Step 4: 打包程序
+    - name: Build Executable
+      run: |
+        pip install pyinstaller
+        pyinstaller --onefile main.py
+
+    # Step 5: 保存打包结果到 Artifacts
+    - name: Upload Executable
+      uses: actions/upload-artifact@v3
+      with:
+        name: PySide6-App
+        path: dist/  # 上传 dist 文件夹
