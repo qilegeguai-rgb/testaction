@@ -17,7 +17,7 @@ class MainWindow(QMainWindow):
 
         # 创建按钮并添加到按钮组
         for i in range(1, 4):
-            button = QPushButton(f"我的按钮 {i}")
+            button = QPushButton(f"我的按钮的 {i}")
             button.setEnabled(False)  # 初始状态不可点击
             self.button_group.addButton(button, i)  # 使用按钮 ID 作为索引
             layout.addWidget(button)
