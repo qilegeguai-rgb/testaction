@@ -42,7 +42,7 @@ jobs:
         name: PySide6-App
         path: dist/  # 上传 dist 文件夹
 
-release:
+  release:
     needs: build  # 等待 build 任务完成
     runs-on: windows-latest
     
